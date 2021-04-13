@@ -1,0 +1,414 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- ============================ Page Title Start================================== -->
+<div class="page-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+
+                <h2 class="ipt-title">Property List</h2>
+                <span class="ipn-subtitle">Gillow Realestate market place....</span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================ Page Title End ================================== -->
+<!-- ============================ All Property ================================== -->
+
+<section class="bg-light">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="filter_search_opt">
+                    <a href="javascript:void(0);" onclick="openFilterSearch()">Search Property<i class="ml-2 ti-menu"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <!-- property Sidebar -->
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="simple-sidebar sm-sidebar" id="filter_search" style="left:0;">
+
+                    <div class="search-sidebar_header">
+                        <h4 class="ssh_heading">Close Filter</h4>
+                        <button onclick="closeFilterSearch()" class="w3-bar-item w3-button w3-large"><i class="ti-close"></i></button>
+                    </div>
+
+                    <!-- Find New Property -->
+                    <div class="sidebar-widgets">
+
+                        <div class="search-inner p-0">
+
+                            <div class="filter-search-box">
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <input type="text" class="form-control" id="keyword" placeholder="keywords e.g pool, GLW123...">
+                                        <i class="ti-search"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="text" class="form-control" id="mylocation" placeholder="Search for a location">
+                                            <img src="assets/img/pin.svg" width="18" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Category (Select)</label>
+                                        <select id="category2" class="form-control">
+                                            <option value="">&nbsp;</option>
+                                            <option value="For Rent" selected="selected">For Rent</option>
+                                            <option value="For Sale">For Sale</option>
+                                            <option value="Joint Venture">Joint Venture</option>
+                                            <option value="Short Let">Short Let</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Type (Select)</label>
+                                        <select name="proptype2" id="proptype" class="form-control select2">
+                                            <option value="">&nbsp;</option>
+                                            <option value="Flat">Flat</option>
+                                            <option value="Houses" selected="selected">Houses</option>
+                                            <option value="Lands">Lands</option>
+                                            <option value="Commercial Property">Commercial Property</option>
+                                            <option value="Co-Working Spaces">Co-Working Spaces</option>
+                                            <option value="Offices">Offices</option>
+                                            <option value="Shops">Shops</option>
+                                            <option value="Detached Duplexes">Detached Duplexes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Minimum Price (N)</label>
+                                        <select name="minprice" id="minprice" class="form-control"><option value="0" selected="selected">No Min</option><option value="100000">₦ 100,000</option><option value="200000">₦ 200,000</option><option value="250000">₦ 250,000</option><option value="300000">₦ 300,000</option><option value="400000">₦ 400,000</option><option value="500000">₦ 500,000</option><option value="600000">₦ 600,000</option><option value="700000">₦ 700,000</option><option value="750000">₦ 750,000</option><option value="800000">₦ 800,000</option><option value="900000">₦ 900,000</option><option value="1000000">₦ 1 Million</option><option value="2000000">₦ 2 Million</option><option value="3000000">₦ 3 Million</option><option value="5000000">₦ 5 Million</option><option value="10000000">₦ 10 Million</option><option value="20000000">₦ 20 Million</option><option value="30000000">₦ 30 Million</option><option value="40000000">₦ 40 Million</option><option value="60000000">₦ 60 Million</option><option value="80000000">₦ 80 Million</option><option value="100000000">₦ 100 Million</option><option value="150000000">₦ 150 Million</option><option value="200000000">₦ 200 Million</option><option value="250000000">₦ 250 Million</option><option value="300000000">₦ 300 Million</option><option value="400000000">₦ 400 Million</option><option value="500000000">₦ 500 Million</option><option value="600000000">₦ 600 Million</option><option value="700000000">₦ 700 Million</option><option value="800000000">₦ 800 Million</option><option value="900000000">₦ 900 Million</option><option value="1000000000">₦ 1 Billion</option><option value="2000000000">₦ 2 Billion</option><option value="5000000000">₦ 5 Billion</option><option value="10000000000">₦ 10 Billion</option><option value="20000000000">₦ 20 Billion</option><option value="30000000000">₦ 30 Billion</option><option value="40000000000">₦ 40 Billion</option><option value="50000000000">₦ 50 Billion</option></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Maximum Price (N)</label>
+                                        <select name="maxprice" id="maxprice" class="form-control"><option value="0" selected="selected">No Max</option><option value="100000">₦ 100,000</option><option value="200000">₦ 200,000</option><option value="250000">₦ 250,000</option><option value="300000">₦ 300,000</option><option value="400000">₦ 400,000</option><option value="500000">₦ 500,000</option><option value="600000">₦ 600,000</option><option value="700000">₦ 700,000</option><option value="750000">₦ 750,000</option><option value="800000">₦ 800,000</option><option value="900000">₦ 900,000</option><option value="1000000">₦ 1 Million</option><option value="2000000">₦ 2 Million</option><option value="3000000">₦ 3 Million</option><option value="5000000">₦ 5 Million</option><option value="10000000">₦ 10 Million</option><option value="20000000">₦ 20 Million</option><option value="30000000">₦ 30 Million</option><option value="40000000">₦ 40 Million</option><option value="60000000">₦ 60 Million</option><option value="80000000">₦ 80 Million</option><option value="100000000">₦ 100 Million</option><option value="150000000">₦ 150 Million</option><option value="200000000">₦ 200 Million</option><option value="250000000">₦ 250 Million</option><option value="300000000">₦ 300 Million</option><option value="400000000">₦ 400 Million</option><option value="500000000">₦ 500 Million</option><option value="600000000">₦ 600 Million</option><option value="700000000">₦ 700 Million</option><option value="800000000">₦ 800 Million</option><option value="900000000">₦ 900 Million</option><option value="1000000000">₦ 1 Billion</option><option value="2000000000">₦ 2 Billion</option><option value="5000000000">₦ 5 Billion</option><option value="10000000000">₦ 10 Billion</option><option value="20000000000">₦ 20 Billion</option><option value="30000000000">₦ 30 Billion</option><option value="40000000000">₦ 40 Billion</option><option value="50000000000">₦ 50 Billion</option></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Bedroom</label>
+                                        <select name="bedroom" id="bedroom" class="form-control"><option value="0" selected="selected">Any</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <label>Toilet</label>
+                                        <select name="toilet" id="toilet" class="form-control"><option value="0" selected="selected">Any</option><option value="1" >1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+                                       </div>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group filter_button">
+                                <button type="submit" class="btn btn btn-theme-light-2 rounded full-width" onclick="searchproperties()">Search on Gillow</button>
+
+                                <script>
+                                    function searchproperties() {
+
+
+                                        var location = $("#mylocation").val();
+
+                                       
+                                        var category = $("#category2").val();
+                                        var type = $("#proptype2").val();
+                                        var minprice = $("#minprice").val();
+                                        var maxprice = $("#maxprice").val();
+                                        var keywords = $("#keyword").val();
+                                        var toilet = $("#toilet").val();
+                                        var bedroom = $("#bedroom").val();
+
+                                        if (location == null) {
+                                            location = "";
+                                        }
+
+                                        if (category == null) {
+                                            category = "";
+                                        }
+                                        if (type == null) {
+                                            type = "";
+                                        }
+
+                                        if (minprice == null || minprice == "No Min") {
+                                            minprice = 0;
+                                        }
+                                        if (maxprice == null || maxprice == "No Max") {
+                                            maxprice = 0;
+                                        }
+
+                                        if (toilet == null || toilet == "Any") {
+                                            toilet = 0;
+                                        }
+
+                                        if (bedroom == null || bedroom == "Any") {
+                                            bedroom = 0;
+                                        }
+
+                                        if (keywords == null) {
+                                            keywords = "";
+                                        }
+
+                                        window.location.href = "searchresult?location=" + location + "&category=" + category + "&type=" + type + "&minprice=" + minprice + "&maxprice=" + maxprice + "&toilet=" + toilet + "&bedroom=" + bedroom + "&keywords=" + keywords + "&skip=0"
+
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar End -->
+
+            </div>
+
+            <div class="col-lg-8 col-md-12 col-sm-12">
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="item-shorting-box">
+                            <div class="item-shorting clearfix">
+                                <div class="left-column pull-left"><h4 class="m-0">Search Results...</h4></div>
+                            </div>
+                            <div class="item-shorting-box-right">
+                                <div class="shorting-by">
+                                    <select id="shorty" class="form-control">
+                                        <option value="">&nbsp;</option>
+                                        <option value="1">Low Price</option>
+                                        <option value="2">High Price</option>
+                                        <option value="3">Most Popular</option>
+                                    </select>
+                                </div>
+                                <ul class="shorting-list">
+                                    <li><a href="grid-layout-with-sidebar.html" class="active"><i class="ti-layout-grid2"></i></a></li>
+                                    <li><a href="list-layout-with-sidebar.html"><i class="ti-view-list"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+
+                    @if (ViewBag.Properties != null)
+                    {
+                        foreach (var item in ViewBag.Properties)
+                        {
+                          
+                            <!-- Single Property -->
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="property-listing property-2">
+
+                                    <div class="listing-img-wrapper">
+                                        <div class="list-img-slide">
+                                            <div class="click">
+                                                @foreach (var img in item.ImageList)
+                                                {
+                                                    <div><a href="propertiesdetails?ID=@item.TypeID"><img src="~/properties/@img" class="img-fluid mx-auto" alt="" /></a></div>
+                                                   
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="listing-detail-wrapper">
+                                        <div class="listing-short-detail-wrap">
+                                            <div class="listing-short-detail">
+                                                <span class="property-type">@item.Category</span>
+                                                <h4 ><a href="propertiesdetails?ID=@item.TypeID" class="prt-link-detail">@item.Title</a></h4>
+                                            </div>
+
+                                            <div class="listing-short-detail-flex">
+                                                @{
+                                                    var price = "N" + item.Price.ToString("#,##0");
+                                                   
+                                                }
+                                                <h6 class="listing-card-info-price">@price</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-features-wrapper">
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <div class="inc-fleat-icon"><img src="assets/img/bed.svg" width="13" alt="" /></div>@item.Beds Beds
+                                            </div>
+                                            <div class="listing-card-info-icon">
+                                                <div class="inc-fleat-icon"><img src="assets/img/bathtub.svg" width="13" alt="" /></div>@item.Baths Bath
+                                            </div>
+                                            <div class="listing-card-info-icon">
+                                                <div class="inc-fleat-icon"><img src="assets/img/move.svg" width="13" alt="" /></div>@item.Toilets Toilets
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="listing-detail-footer">
+                                        <div class="footer-first">
+                                            <div class="foot-location"><img src="assets/img/pin.svg" width="18" alt="" />@item.Location</div>
+                                        </div>
+                                        <div class="footer-flex">
+                                            <a href="propertiesdetails?ID=@item.TypeID" class="prt-view">View</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- End Single Property -->
+                        }
+
+                    }
+
+
+
+                </div>
+
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <ul class="pagination p-center">
+                            <li class="page-item">
+                                <a class="page-link" href="#" onclick="previous();" aria-label="Previous">
+                                    <span class="ti-arrow-left"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                            </li>
+                            @{
+                                int skipcnt = 0;
+                                string url;
+                                int cnt = 0;
+                            }
+
+                            @for (int i = 0; i < ViewBag.PageCount; i++)
+                            {
+
+                                cnt = i + 1;
+                                url = "searchresult?location=" + ViewBag.Query.Location + "& category=" + ViewBag.Query.Category + "&type=" + ViewBag.Query.Type + "&minprice=" + ViewBag.Query.MinPrice + "&maxprice=" + ViewBag.Query.MaxPrice + "&keywords=" + ViewBag.Query.Keywords + "&skip=" + skipcnt;
+
+                                if (i == ViewBag.PageCount -1)
+                                {
+                                    <li class="page-item active"><a class="page-link" href="@url">@cnt</a></li>
+                                }
+                                else
+                                {
+                                    <li class="page-item"><a class="page-link" href="@url">@cnt</a></li>
+                                }
+
+                                skipcnt = skipcnt + 10;
+                            }
+
+                            @if (ViewBag.Properties.Count >= 10)
+                            {
+                                url = "searchresult?location=" + ViewBag.Query.Location + "& category=" + ViewBag.Query.Category + "&type=" + ViewBag.Query.Type + "&minprice=" + ViewBag.Query.MinPrice + "&maxprice=" + ViewBag.Query.MaxPrice + "&keywords=" + ViewBag.Query.Keywords + "&skip=" + skipcnt;
+                                cnt = cnt + 1;
+                                <li class="page-item"><a class="page-link" href="@url">@cnt</a></li>
+
+                            }
+
+                        
+
+                            <li class="page-item">
+                                <a class="page-link" href="#" onclick="next();" aria-label="Next">
+                                    <span class="ti-arrow-right" ></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                        <script>
+                            function getQueryVariable(url, variable) {
+                                var query = url.split('?')[1];
+                               
+                                var vars = query.split('&');
+                                for (var i = 0; i < vars.length; i++) {
+                                    var pair = vars[i].split('=');
+                                    if (pair[0] == variable) {
+                                        return pair[1];
+                                    }
+                                }
+
+                                return "";
+                            }
+
+                            function next() {
+                                var url = window.location.href;
+                                var location = getQueryVariable(url, 'location');
+                                var keyword = getQueryVariable(url, 'keywords');
+
+                                var type = getQueryVariable(url, 'type');
+                                var category = getQueryVariable(url, 'category');
+                                var minprice = getQueryVariable(url, 'minprice');
+                                var maxprice = getQueryVariable(url, 'maxprice');
+                                var toilet = getQueryVariable(url, 'toilet');
+                                var bedroom = getQueryVariable(url, 'bedroom');
+                                var skip =Number(getQueryVariable(url, 'skip')) + 10;
+
+                                var params = { 'location': location, 'keywords': keyword, 'type': type, 'category': category, 'minprice': minprice, 'maxprice': maxprice, 'toilet': toilet, 'bedroom': bedroom, 'skip': skip};
+
+                                var new_url = 'https://gillow.ng/searchresult?' + jQuery.param(params);
+                                window.location.href = new_url;
+                            }
+
+                            function previous() {
+                                var url = window.location.href;
+                                var location = getQueryVariable(url, 'location');
+                                var keyword = getQueryVariable(url, 'keywords');
+
+                              
+                                var type = getQueryVariable(url, 'type');
+                                var category = getQueryVariable(url, 'category');
+                                var minprice = getQueryVariable(url, 'minprice');
+                                var maxprice = getQueryVariable(url, 'maxprice');
+                                var toilet = getQueryVariable(url, 'toilet');
+                                var bedroom = getQueryVariable(url, 'bedroom');
+                                var skip = Number(getQueryVariable(url, 'skip')) - 10;
+                                if (skip < 0) {
+                                    return;
+                                }
+
+                                var params = { 'location': location, 'keywords': keyword, 'type': type, 'category': category, 'minprice': minprice, 'maxprice': maxprice, 'toilet': toilet, 'bedroom': bedroom, 'skip': skip };
+
+                                var new_url = 'https://gillow.ng/searchresult?' + jQuery.param(params);
+                                window.location.href = new_url;
+                            }
+
+                        </script>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ============================ All Property ================================== -->

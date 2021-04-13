@@ -1,0 +1,416 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .modal-dialog {
+        max-width: 800px;
+        margin: 30px auto;
+    }
+
+
+
+    .modal-body {
+        position: relative;
+        padding: 0px;
+    }
+
+    .close {
+        position: absolute;
+        right: -30px;
+        top: 0;
+        z-index: 999;
+        font-size: 2rem;
+        font-weight: normal;
+        color: #fff;
+        opacity: 1;
+    }
+
+    #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+    }
+</style>
+<!-- ============================ Hero Banner  Start================================== -->
+<div class="featured_slick_gallery gray">
+    <div class="featured_slick_gallery-slide">
+
+        @if (ViewBag.ImageList != null)
+        {
+            foreach (var item in ViewBag.ImageList)
+            {
+                <div class="featured_slick_padd"><a href="~/properties/@item" class="mfp-gallery"><img src="~/properties/@item" class="img-fluid mx-auto" alt="" /></a></div>
+
+            }
+        }
+
+    </div>
+
+</div>
+<!-- ============================ Hero Banner End ================================== -->
+<!-- ============================ Property Detail Start ================================== -->
+
+@if (ViewBag.Property != null)
+{
+    foreach (var item in ViewBag.Property)
+    {
+        <section class="gray-simple">
+            <div class="container">
+                <div class="row">
+
+                    <!-- property main detail -->
+                    <div class="col-lg-8 col-md-12 col-sm-12">
+
+                        <div class="property_block_wrap style-2 p-4">
+                            <div class="prt-detail-title-desc">
+                                <span class="prt-types sale">@item.Category</span>
+
+                                <h3>@item.Title</h3>
+                                @{
+                                    var price = "N" + item.Price.ToString("#,##0");
+                                    if (item.Negotiable == true)
+                                    {
+                                        price = price + " (Negotiable)";
+                                    }
+                                }
+                                <span><i class="lni-map-marker"></i> At @item.Location</span>
+                                <h3 class="prt-price-fix">@price</h3>
+                                <div class="list-fx-features">
+                                    <div class="listing-card-info-icon">
+                                        <div class="inc-fleat-icon"><img src="assets/img/bed.svg" width="13" alt=""></div>@item.Beds Beds
+                                    </div>
+                                    <div class="listing-card-info-icon">
+                                        <div class="inc-fleat-icon"><img src="assets/img/bathtub.svg" width="13" alt=""></div>@item.Baths Bath
+                                    </div>
+                                    <div class="listing-card-info-icon">
+                                        <div class="inc-fleat-icon"><img src="assets/img/move.svg" width="13" alt=""></div>@item.Toilets Toilets
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Single Block Wrap -->
+                        <div class="property_block_wrap style-2">
+
+                            <div class="property_block_wrap_header">
+                                <a data-bs-toggle="collapse" data-parent="#dsrp" data-bs-target="#clTwo" aria-controls="clTwo" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">Description</h4></a>
+                            </div>
+                            <div id="clTwo" class="panel-collapse collapse show">
+                                <div class="block-body">
+                                    <p>@item.Description</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Block Wrap -->
+                        <div class="property_block_wrap style-2">
+
+                            <div class="property_block_wrap_header">
+                                <a data-bs-toggle="collapse" data-parent="#amen" data-bs-target="#clThree" aria-controls="clThree" href="javascript:void(0);" aria-expanded="true"><h4 class="property_block_title">Ameneties</h4></a>
+                            </div>
+
+                            <div id="clThree" class="panel-collapse collapse show">
+                                <div class="block-body">
+                                    <ul class="avl-features third color">
+                                        @if (ViewBag.Features != null)
+                                        {
+                                            foreach (var feauture in ViewBag.Features)
+                                            {
+                                                <li>@feauture</li>
+                                            }
+                                        }
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Single Block Wrap -->
+                        <div class="property_block_wrap style-2">
+
+                            <div class="property_block_wrap_header">
+                                <a data-bs-toggle="collapse" data-parent="#vid" data-bs-target="#clFour" aria-controls="clFour" href="javascript:void(0);" aria-expanded="true" class="collapsed"><h4 class="property_block_title">Property video</h4></a>
+                            </div>
+
+                            <div id="clFour" class="panel-collapse collapse">
+                                <div class="block-body">
+                                    <div class="property_video">
+                                        <div class="thumb">
+                                            <img class="pro_img img-fluid w100" src="~/properties/@item.ImageURL" alt="@item.ImageURL">
+                                            <div class="overlay_icon">
+                                                <div class="bb-video-box">
+                                                    <div class="bb-video-box-inner">
+                                                        <div class="bb-video-box-innerup">
+                                                            @if (item.YoutubeLink != null)
+                                                            {
+
+
+                                                                item.YoutubeLink = item.YoutubeLink.Replace("watch", "embed/");
+                                                                item.YoutubeLink = item.YoutubeLink.Replace("?v=", "");
+
+
+                                                                <a href="#" src="@item.YoutubeLink" data-bs-toggle="modal" data-bs-target="#myModal" class="video-btn theme-cl"><i src="@item.YoutubeLink" class="video-btn ti-control-play"></i></a>
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+
+
+                                    <div class="modal-body">
+
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                        <!-- 16:9 aspect ratio -->
+                                        <div>
+                                            <iframe class="embed-responsive-item" width="100%" height="500" src="" id="video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single Block Wrap -->
+
+
+                        <div class="property_block_wrap style-2">
+
+                            <div class="property_block_wrap_header">
+                                <a data-bs-toggle="collapse" data-parent="#floor" data-bs-target="#clFive" aria-controls="clFive" href="javascript:void(0);" aria-expanded="true" class="collapsed"><h4 class="property_block_title">3D Virtual Tour</h4></a>
+                            </div>
+
+                            <div id="clFive" class="panel-collapse collapse">
+                                <div class="block-body">
+                                    @if (ViewBag.Virtual == null || string.IsNullOrEmpty(ViewBag.Virtual) || ViewBag.Virtual.Length < 1)
+                                    {
+                                        <h2>Virtual Tour Not Uploaded</h2>
+                                    }
+                                    else
+                                    {
+                                        <div class="thumb"> <iframe src="@ViewBag.Virtual" width="100%" height="500px" frameborder="0" allowfullscreen allow="vr" id="showcase_iframe" class="h400"></iframe></div>
+
+                                    }
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="property_block_wrap style-2">
+
+                            <div class="property_block_wrap_header">
+                                <a data-bs-toggle="collapse" data-parent="#loca" data-bs-target="#clSix" aria-controls="clSix" href="javascript:void(0);" aria-expanded="true" class="collapsed"><h4 class="property_block_title">Neighborhood <label style="color:red">(PLEASE MAXIMIZE MAP VIEW FROM TOP RIGHT OF MAP)</label></h4></a>
+                            </div>
+
+                            <div id="clSix" class="panel-collapse collapse">
+                                <div id="map-canvas" style="width: 400px; height: 300px; display:none"></div>
+
+                                <div id="pano" style="width: 100%; height: 500px;"></div>
+                                <div id="info"></div>
+                            </div>
+                            
+                        </div>
+                        <!-- Single Block Wrap -->
+                        <div class="property_block_wrap style-2">
+
+                            <div class="property_block_wrap_header">
+                                <a data-bs-toggle="collapse" data-parent="#clSev" data-bs-target="#clSev" aria-controls="clOne" href="javascript:void(0);" aria-expanded="true" class="collapsed"><h4 class="property_block_title">Gallery</h4></a>
+                            </div>
+
+                            <div id="clSev" class="panel-collapse collapse">
+                                <div class="block-body">
+                                    <ul class="list-gallery-inline">
+
+                                        @if (ViewBag.ImageList != null)
+                                        {
+                                            foreach (var gallery in ViewBag.ImageList)
+                                            {
+                                                <li>
+                                                    <a href="~/properties/@gallery" class="mfp-gallery"><img src="~/properties/@gallery" class="img-fluid mx-auto" alt="" /></a>
+                                                </li>
+                                            }
+
+                                        }
+
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+
+                    <!-- property Sidebar -->
+                    <div class="col-lg-4 col-md-12 col-sm-12">
+
+                        <!-- Like And Share -->
+                        <div class="like_share_wrap b-0">
+                            <div class="pbwts-social">
+                                <ul>
+                                    <li>Share with a friend:</li>
+                                   
+                                    <li><a href="JavaScript:Void(0);" onclick="share()"><i class="lni-share"></i></a></li>
+                                   
+                                </ul>
+                            </div>
+                            <script>
+                                function share() {
+                                    navigator.share({
+                                        title: 'Shared from Gillow',
+                                        text: 'Kindly check out this property on gillow',
+                                        url: window.location.href
+                                    }).then(() => {
+                                        console.log('Thanks for sharing!');
+                                    })
+                                }
+                            </script>
+                        </div>
+
+                        <div class="details-sidebar">
+
+                            <!-- Agent Detail -->
+                            <div class="sides-widget">
+                                <div class="sides-widget-header">
+                                  
+                                    <div class="agent-photo"><img src="~/profiles/@item.SellerProfilePic" alt=""></div>
+                                    <div class="sides-widget-details">
+                                        <h4><a href="#">@item.SellerName</a></h4>
+                                        <span><i class="lni-phone-handset"></i>@item.Phone</span>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="sides-widget-body simple-form">
+
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea class="form-control" id="description">I'm interested in this property.</textarea>
+                                    </div>
+                                    <button class="btn btn-black btn-md rounded full-width" onclick="sendtoAgent(@item.Phone)">Send to Agents Whatsapp</button>
+                                    <script>
+                                        function sendtoAgent(phone) {
+                                            var name = $('#name').val();
+
+                                            if (name == null) {
+                                                alert("Please enter a name");
+                                                return;
+                                            }
+                                            var desc = $('#description').val();
+
+                                            var text = "My Name is " + name + ", " + desc + '. Posted on Gillow. ' + window.location.href
+                                            
+                                            window.location.href = 'https://api.whatsapp.com/send?phone=' + phone + '&text=' + text.replace(' ', '%20');
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+
+                         
+
+                            <!-- Featured Property -->
+                            <div class="sidebar-widgets">
+
+                                <h4>Featured Property</h4>
+
+                                <div class="sidebar_featured_property">
+                                    @if (ViewBag.FeaturedProperties != null)
+                                    {
+                                        foreach (var featured in ViewBag.FeaturedProperties)
+                                        {
+                                            <div class="sides_list_property">
+                                                <div class="sides_list_property_thumb">
+                                                    <img src="~/properties/@featured.ImageURL" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="sides_list_property_detail">
+                                                    <h4><a href="propertiesdetails?ID=@featured.TypeID">
+   
+    @if (featured.Title.Length > 25)
+    {
+        @featured.Title.Substring(0, 25)
+        <span>...</span>
+    }
+    else
+    {
+        @featured.Title
+    }
+</a></h4>
+                                                    <span>
+                                                        <i class="ti-location-pin"></i>
+                                                        
+                                                        @if (featured.Location.Length > 25)
+                                                        {
+                                                            @featured.Location.Substring(0, 25)
+                                                            <span>...</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            @featured.Location
+                                                        }
+                                                    </span>
+                                                    <div class="lists_property_price">
+                                                        <div class="lists_property_types">
+                                                            <div class="property_types_vlix sale">@featured.Category</div>
+                                                        </div>
+                                                        <div class="lists_property_price_value">
+
+                                                            @{
+                                                                var singleprice = "N" + featured.Price.ToString("#,##0");
+                                                               
+                                                            }
+                                                            <h4>@singleprice</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    <!-- List Sibar Property -->
+
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    }
+
+}
+
+<!-- ============================ Property Detail End ================================== -->
