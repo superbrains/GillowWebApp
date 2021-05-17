@@ -43,5 +43,6 @@ namespace GillowWebApp.ModelViews
         public string Features { get; set; }
 
         public string VirtualURL { get; set; }
+        public string BoostOption { get; set; }
     }
 }

@@ -32,6 +32,7 @@
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Mvc": "2.1.3",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
+          "Microsoft.AspNetCore.Session": "2.1.1",
           "Microsoft.AspNetCore.StaticFiles": "2.1.1",
           "Microsoft.EntityFrameworkCore": "2.1.14",
           "Microsoft.EntityFrameworkCore.Design": "2.1.14",
@@ -40,7 +41,8 @@
           "Microsoft.Extensions.Logging.Debug": "2.1.1",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.BrowserLink": "2.1.1",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.10",
+          "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.6"
         },
         "runtime": {
           "GillowWebApp.dll": {}
@@ -193,6 +195,7 @@
           "lib/netstandard2.0/Hangfire.SqlServer.dll": {}
         }
       },
+      "jQuery/1.8.0": {},
       "Magick.NET-Q8-AnyCPU/7.23.1": {
         "dependencies": {
           "Magick.NET.Core": "6.1.0"
@@ -266,8 +269,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.7.0",
+            "fileVersion": "2.1.7.18340"
           }
         },
         "compile": {
@@ -281,8 +284,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Connections.Abstractions.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18207"
           }
         },
         "compile": {
@@ -306,8 +309,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -321,8 +324,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Abstractions.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -335,8 +338,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.ApiExplorer.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -362,8 +365,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Core.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -377,8 +380,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Cors.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -393,8 +396,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.DataAnnotations.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -408,8 +411,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Formatters.Json.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -425,8 +428,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Localization.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -445,8 +448,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.Razor.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -459,8 +462,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.RazorPages.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -478,8 +481,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.TagHelpers.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -499,8 +502,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Mvc.ViewFeatures.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18263"
           }
         },
         "compile": {
@@ -526,8 +529,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Server.IISIntegration.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.7.0",
+            "fileVersion": "2.1.7.18340"
           }
         },
         "compile": {
@@ -543,8 +546,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Server.Kestrel.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18207"
           }
         },
         "compile": {
@@ -568,8 +571,8 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/Microsoft.AspNetCore.Server.Kestrel.Core.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18207"
           }
         },
         "compile": {
@@ -583,8 +586,8 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/Microsoft.AspNetCore.Server.Kestrel.Https.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18207"
           }
         },
         "compile": {
@@ -597,8 +600,8 @@
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18207"
           }
         },
         "compile": {
@@ -613,8 +616,8 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.dll": {
-            "assemblyVersion": "2.1.1.0",
-            "fileVersion": "2.1.1.18157"
+            "assemblyVersion": "2.1.3.0",
+            "fileVersion": "2.1.3.18207"
           }
         },
         "compile": {
@@ -779,12 +782,26 @@
           "lib/netstandard1.6/Microsoft.Extensions.DependencyModel.dll": {}
         }
       },
+      "Microsoft.jQuery.Unobtrusive.Ajax/3.2.6": {
+        "dependencies": {
+          "jQuery": "1.8.0"
+        }
+      },
       "Microsoft.VisualStudio.Web.BrowserLink/2.1.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.1.1",
           "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
           "Microsoft.AspNetCore.Http.Extensions": "2.1.1",
           "Microsoft.Extensions.FileProviders.Physical": "2.1.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.VisualStudio.Web.BrowserLink.dll": {
+            "assemblyVersion": "2.1.1.0",
+            "fileVersion": "2.1.1.18157"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.VisualStudio.Web.BrowserLink.dll": {}
         }
       },
       "Microsoft.VisualStudio.Web.CodeGeneration/2.1.10": {
@@ -1108,12 +1125,12 @@
       "System.IO.Pipelines/4.5.3": {
         "runtime": {
           "lib/netcoreapp2.1/System.IO.Pipelines.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "4.6.26515.6"
+            "assemblyVersion": "4.0.0.1",
+            "fileVersion": "4.6.27129.4"
           }
         },
         "compile": {
-          "ref/netstandard1.3/System.IO.Pipelines.dll": {}
+          "lib/netcoreapp2.1/System.IO.Pipelines.dll": {}
         }
       },
       "System.Linq.Parallel/4.3.0": {
@@ -1147,8 +1164,8 @@
       "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "runtime": {
           "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "assemblyVersion": "4.0.4.0",
-            "fileVersion": "0.0.0.0"
+            "assemblyVersion": "4.0.4.1",
+            "fileVersion": "4.6.26919.2"
           }
         },
         "compile": {
@@ -1158,6 +1175,26 @@
       "System.Security.Principal.Windows/4.5.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Principal.Windows.dll": {
+            "assemblyVersion": "4.1.1.1",
+            "fileVersion": "4.6.26919.2"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp2.0/System.Security.Principal.Windows.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.1.1.1",
+            "fileVersion": "4.6.26919.2"
+          },
+          "runtimes/win/lib/netcoreapp2.0/System.Security.Principal.Windows.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.1.1.1",
+            "fileVersion": "4.6.26919.2"
+          }
         },
         "compile": {
           "ref/netstandard2.0/System.Security.Principal.Windows.dll": {}
@@ -3899,6 +3936,13 @@
       "path": "hangfire.sqlserver/1.7.11",
       "hashPath": "hangfire.sqlserver.1.7.11.nupkg.sha512"
     },
+    "jQuery/1.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-laDFQRJrIRHT0Z0GVYklMt3bE0iu0MZFJwHwg21kt3SHb7Bj8TdNiM3K+ZdK1DzB8ZxKy8z7NkJvwMas+dmHBw==",
+      "path": "jquery/1.8.0",
+      "hashPath": "jquery.1.8.0.nupkg.sha512"
+    },
     "Magick.NET-Q8-AnyCPU/7.23.1": {
       "type": "package",
       "serviceable": true,
@@ -4136,6 +4180,13 @@
       "sha512": "sha512-nS2XKqi+1A1umnYNLX2Fbm/XnzCxs5i+zXVJ3VC6r9t2z0NZr9FLnJN4VQpKigdcWH/iFTbMuX6M6WQJcTjVIg==",
       "path": "microsoft.extensions.dependencymodel/2.1.0",
       "hashPath": "microsoft.extensions.dependencymodel.2.1.0.nupkg.sha512"
+    },
+    "Microsoft.jQuery.Unobtrusive.Ajax/3.2.6": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-udg7ZBszgqxloQ+ShJRONKQAzPnJIlUhKZB+AIvZdKh7CDc5Nms69T9X0hN5i+NqMmQE6njkzdCcEb16lPdJTw==",
+      "path": "microsoft.jquery.unobtrusive.ajax/3.2.6",
+      "hashPath": "microsoft.jquery.unobtrusive.ajax.3.2.6.nupkg.sha512"
     },
     "Microsoft.VisualStudio.Web.BrowserLink/2.1.1": {
       "type": "package",

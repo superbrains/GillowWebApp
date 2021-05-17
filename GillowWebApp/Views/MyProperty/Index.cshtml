@@ -1,0 +1,301 @@
+﻿
+
+
+
+
+@{
+    ViewData["Title"] = "My Property";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+<script src="~/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+<script src="~/assets/js/dropzone.js"></script>
+
+@*<script src="~/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>*@
+<!-- ============================ Page Title Start================================== -->
+<!-- ============================ Page Title End ================================== -->
+<!-- ============================ Submit Property Start ================================== -->
+
+
+<div class="col-lg-9 col-md-12">
+    <div class="row">
+        <br />
+        <br />
+        <div class="page-title">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+
+                        <h2 class="ipt-title">Welcome!</h2>
+                        <span class="ipn-subtitle">Welcome To Your Account</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================ Page Title End ================================== -->
+        <!-- ============================ Submit Property Start ================================== -->
+
+        <div class="container">
+            <div class="row">
+
+                <section class="bg-light">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+                                <div class="filter_search_opt">
+                                    <a href="javascript:void(0);" onclick="openFilterSearch()">Dashboard Navigation<i class="ml-2 ti-menu"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+
+                            <div class="col-lg-9 col-md-12">
+                                <div class="dashboard-wraper">
+
+                                    <!-- Bookmark Property -->
+                                    <div class="form-submit">
+                                        <h4>My Property</h4>
+                                      
+                                    </div>
+
+                                    <div class="row">
+                                        @foreach (var item in ViewBag.myProperty)
+                                        {
+                                            <div class="col-md-12 col-sm-12 col-md-12">
+                                                <div class="singles-dashboard-list">
+                                                    <div class="sd-list-left">
+                                                        <img src="~/properties/@item.ImageURL" class="img-fluid" alt="" />
+                                                    </div>
+                                                    <div class="sd-list-right">
+                                                        <h4 class="listing_dashboard_title"><a href="#" class="theme-cl">@item.Title</a></h4>
+                                                        <div class="user_dashboard_listed">
+                                                            Seller: @item.SellerName
+                                                        </div>
+                                                        <div class="user_dashboard_listed">
+                                                            Price: N @item.Price
+                                                        </div>
+                                                        <div class="user_dashboard_listed">
+                                                            Listed in <a href="javascript:void(0);" class="theme-cl">Rentals</a> and <a href="javascript:void(0);" class="theme-cl">Apartments</a>
+                                                        </div>
+                                                        <div class="user_dashboard_listed">
+                                                            Location: @item.Location
+                                                        </div>
+                                                        <div class="action">
+                                                            @if (item.Subscription == "Boost")
+                                                            {
+                                                                
+                                                                <button type="button" class="btn btn-primary default mt-2" style="background-color:grey" disabled="disabled" >Boosted</button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button type="button" class="btn btn-primary default mt-2" onclick="Boost(@item.TypeID)">Boost</button>
+                                                            }
+                                                            @if (item.Subscription == "Blast")
+                                                            {
+                                                                <button type="button" class="btn btn-primary default mt-2">Blasted</button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button type="button" class="btn btn-success default mt-2" onclick="Blast(@item.TypeID)">Blast</button>
+                                                            }
+
+                                                            @if (item.Subscription == "Star")
+                                                            {
+                                                                <button type="button" class="btn btn-primary default mt-2">Starred</button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <button type="button" class="btn btn-danger default mt-2" onclick="Star(@item.TypeID)">Star</button>
+                                                            }
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                      
+                                    
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Gallery -->
+            
+
+            <!-- Location -->
+         
+            <!-- Detailed Information -->
+          
+
+
+
+
+
+          
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<script>
+   
+    Dropzone.autoDiscover = false;
+
+    $(function () {
+        var dz = null;
+        $('#my-dropzone').dropzone({
+            autoProcessQueue: false,
+            maxFilesize: 2,
+            maxFiles: 5,
+            parallelUploads: 5,
+            acceptedFiles: ".jpg,.png,.jpeg",
+            uploadMultiple: true,
+            addRemoveLinks: true,
+
+            // resizeWidth: 64,
+
+            init: function () {
+                dz = this;
+                $("#btnSubmit").click(function () {
+
+                    dz.processQueue();
+
+                });
+
+                dz.on('sendingmultiple', function (data, xhr, formdata) {
+                  
+
+                    formdata.append('title', $('#title').val());
+                    formdata.append('bathroom', $('#bathrooms').val());
+                    formdata.append('toilet', $('#Toilet').val());
+                    formdata.append('category', $('#category').val());
+                    formdata.append('types', $('#types').val());
+                    formdata.append('currency', $('#currency').val());
+                    formdata.append('amount', $('#amount').val());
+                    formdata.append('bedroom', $('#bedrooms').val());
+                    formdata.append('parking', $('#parking').val());
+                    formdata.append('description', $('#description').val());
+                    formdata.append('location', $('#location2').val());
+                    formdata.append('negotaible', $('#negotiable').val());
+                    formdata.append('virtual', $('#virtual').val());
+                    formdata.append('youtube', $('#youtube').val());
+                    formdata.append('virtual', $('#virtual').val());
+                    formdata.append('country', $('#country2').val());
+                    formdata.append('state', $('#state').val());
+                    var selectedids = new Array();
+                    $('.checkbox-custom:checked').each(function () {
+                        if ($(this).prop('checked')) {
+                            selectedids.push($(this).val());
+                        }
+                    });
+                    formdata.append('features', selectedids);
+
+                   // formdata = new formdata(myform);
+                });
+            },
+
+            dictDefaultMessage: "Click to select Property Image"
+        });
+    });
+
+
+    function Blast(typeId) {
+
+        var package = 'Blast'
+        $.ajax({
+            type: "POST",
+            // traditional: true,
+           // cache: false,
+            url: "MyProperty/BoostProperty",
+            data: { TypeID: typeId, package: package },
+            contentType: "application/x-www-form-urlencoded",
+            //  dataType: "json",
+            success: setTimeout(function () {
+                Swal.fire("Success", "Property Blasted", "success").then(() => {
+                    location.href = "MyProperty";//where you want to redirect after success
+                });
+            }, 100)
+
+
+
+
+
+        });
+
+    }
+
+    function Boost(typeId) {
+        
+        var package = 'Boost';
+      
+        $.ajax({
+            type: "POST",
+            // traditional: true,
+           // cache: false,
+            url: "/MyProperty/BoostProperty",
+            data: { TypeID: typeId, package: package },
+          //  contentType: "application/x-www-form-urlencoded",
+            //  dataType: "json",
+            //success: setTimeout(function () {
+            //    Swal.fire("Success", "Property Boosted", "success").then(() => {
+            //        location.href = "/MyProperty";//where you want to redirect after success
+            //    });
+            //}, 100)
+
+
+
+
+
+        });
+    }
+
+    function Star(typeId) {
+        var package = 'Star'
+        $.ajax({
+            type: "POST",
+            // traditional: true,
+           // cache: false,
+            url: "/MyProperty/BoostProperty",
+            data: { TypeID: typeId, package: package },
+          //  contentType: "application/x-www-form-urlencoded",
+            //  dataType: "json",
+
+            success: setTimeout(function () {
+                Swal.fire("Success", "Property Star", "success").then(() => {
+                    location.href = "/MyProperty";//where you want to redirect after success
+                });
+            }, 100)
+
+
+
+
+
+        });
+
+    }
+
+
+
+
+
+
+</script>
+
+<!-- ============================ Submit Property End ================================== -->

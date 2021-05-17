@@ -49,12 +49,12 @@ namespace GillowWebApp.Repositories.AllProperties
         private const string ReadRange = "Sheet1!A:L";
         public string WriteRange;
 
-        public async Task<ActionResult<string>>  BoostProperty(BoostView boostView)
+        public string  BoostProperty(BoostView boostView)
         {
 
-            var propertysub = await _context.PropertySubscription.Include(p => p.Profile).FirstOrDefaultAsync(c => c.Profile.ProfileID == boostView.ProfileID);
+            var propertysub = _context.PropertySubscription.Include(p => p.Profile).FirstOrDefault(c => c.Profile.ProfileID == boostView.ProfileID);
 
-            var property = await _context.Properties.FirstOrDefaultAsync(c => c.PropertyID == boostView.PropertyID);
+            var property =  _context.Properties.FirstOrDefault(c => c.PropertyID == boostView.PropertyID);
 
             if (boostView.BoostOption == "Boost")
             {
@@ -113,7 +113,7 @@ namespace GillowWebApp.Repositories.AllProperties
                 property.BoostPlanID = 6;
             }
 
-            await _context.SaveChangesAsync();
+             _context.SaveChangesAsync();
 
             return "Success";
         }
@@ -213,15 +213,15 @@ namespace GillowWebApp.Repositories.AllProperties
             throw new NotImplementedException();
         }
 
-        public async Task<ActionResult<SearchResult>> GetPropertyByOwner(int ProfileID, int Skip)
+        public SearchResult GetPropertyByOwner(int ProfileID, int Skip)
         {
             SearchResult searchResult = new SearchResult();
             List<Searches> searches = new List<Searches>();
             try
             {
 
-                var properties = await _context.Properties.Include(c => c.Profile)
-             .Where(p => p.Profile.ProfileID == ProfileID && p.Status == "Active").OrderByDescending(p => p.PropertyID).Skip(Skip).Take(10).ToListAsync();//((p.ProductDescription.Contains(searchText)) || (p.ProductCategory.Contains(searchText)) || (p.SubCategory.Contains(searchText))  )).OrderByDescending(c=>c.Profile.ExpiryDate) //&&  (p.Profile.SuscriptionPlan != "Free") && (p.Profile.ExpiryDate > DateTime.Now)
+                var properties = _context.Properties.Include(c => c.Profile)
+             .Where(p => p.Profile.ProfileID == ProfileID && p.Status == "Active").OrderByDescending(p => p.PropertyID).Skip(Skip).Take(10).ToList();//((p.ProductDescription.Contains(searchText)) || (p.ProductCategory.Contains(searchText)) || (p.SubCategory.Contains(searchText))  )).OrderByDescending(c=>c.Profile.ExpiryDate) //&&  (p.Profile.SuscriptionPlan != "Free") && (p.Profile.ExpiryDate > DateTime.Now)
 
                 try
                 {
@@ -262,8 +262,11 @@ namespace GillowWebApp.Repositories.AllProperties
                         searchItem.Type = "Property";
                         searchItem.TypeID = item.PropertyID;
                         searchItem.VerificationStatus = item.Profile.VerificationStatus;
-                        searchItem.ImageURL3D = "https://www.gillow.ng/app/api/Property3D/GetProperty3DImage?PropertyID=" + item.PropertyID.ToString();
-                        searchItem.ImageURL = "https://www.gillow.ng/app/api/PropertyImages/GetPropertyImage?PropertyID=" + item.PropertyID.ToString();
+
+                        searchItem.ImageURL = _context.PropertyImages.FirstOrDefault(x => x.Properties.PropertyID == item.PropertyID).ImageURL;
+                       
+                        searchItem.ImageURL3D = item.VirtualURL; 
+                       // searchItem.ImageURL = "https://www.gillow.ng/app/api/PropertyImages/GetPropertyImage?PropertyID=" + item.PropertyID.ToString();
                         searchItem.VirtualURL = item.VirtualURL;
 
                         searchItem.ImageList = new List<string>();
@@ -548,7 +551,7 @@ namespace GillowWebApp.Repositories.AllProperties
             }
         }
 
-        public async Task<ActionResult<PropertyResult>> PostProperty([FromForm] PropertyView propertyView)
+        public PropertyResult PostProperty([FromForm] PropertyView propertyView)
         {
             try
             {
@@ -561,14 +564,14 @@ namespace GillowWebApp.Repositories.AllProperties
                 property.Category = propertyView.Category;
                 property.Country = propertyView.Country;
                 property.Currency = propertyView.Currency;
-                property.DatePosted = propertyView.DatePosted;
+                property.DatePosted = DateTime.UtcNow;
                 property.Description = propertyView.Description;
                 property.Location = propertyView.Location;
                 property.Parking = propertyView.Parking;
                 property.Negotiable = propertyView.Negotiable;
                 property.Profile.ProfileID = propertyView.ProfileID;
                 property.State = propertyView.State;
-                property.Status = propertyView.Status;
+                property.Status = "Active";
                 property.Title = propertyView.Title;
                 property.Toilet = propertyView.Toilet;
                 property.Type = propertyView.Type;
@@ -582,7 +585,7 @@ namespace GillowWebApp.Repositories.AllProperties
                 _context.Properties.Add(property);
 
                 _context.Entry(property.Profile).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
-                await _context.SaveChangesAsync();
+                 _context.SaveChangesAsync();
 
                 //Upload Product Images
                 var numberoffiles = propertyView.files.Count;
@@ -598,7 +601,7 @@ namespace GillowWebApp.Repositories.AllProperties
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await file.CopyToAsync(stream);
+                        file.CopyToAsync(stream);
 
                     }
 
@@ -641,7 +644,7 @@ namespace GillowWebApp.Repositories.AllProperties
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        await file.CopyToAsync(stream);
+                         file.CopyToAsync(stream);
 
 
 
@@ -679,7 +682,7 @@ namespace GillowWebApp.Repositories.AllProperties
                 var jobId2 = BackgroundJob.Enqueue(() => WriteToGoogleSheet(val));
                 //WriteToGoogleSheet
 
-                var propsub = await _context.PropertySubscription.FirstOrDefaultAsync(c => c.Profile.ProfileID == propertyView.ProfileID);
+                var propsub =  _context.PropertySubscription.FirstOrDefault(c => c.Profile.ProfileID == propertyView.ProfileID);
                 if (propsub == null)
                 {
                     PropertySubscription propertySubscription = new PropertySubscription();
@@ -692,13 +695,10 @@ namespace GillowWebApp.Repositories.AllProperties
                     propertySubscription.RealtorSpecialist = 0;
                     propertySubscription.StarPremium = 0;
                     propertySubscription.VirtualDisplay = 0;
-
                     propertySubscription.SubscriptionPlan = "Free";
                     propertySubscription.SubscriptionPlanID = 0;
                     propertySubscription.ZoneSpecialist = 0;
-
                     _context.PropertySubscription.Add(propertySubscription);
-
                     _context.Entry(propertySubscription.Profile).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 
 
@@ -713,7 +713,7 @@ namespace GillowWebApp.Repositories.AllProperties
 
 
 
-                await _context.SaveChangesAsync();
+                 _context.SaveChangesAsync();
 
 
                 PropertyResult profileResult = new PropertyResult();
@@ -1105,7 +1105,7 @@ namespace GillowWebApp.Repositories.AllProperties
                     searchItem.TypeID = item.PropertyID;
                     searchItem.VerificationStatus = item.Profile.VerificationStatus;
                     searchItem.ImageURL3D = item.VirtualURL;
-
+                   
 
                     searchItem.ImageList = new List<string>();
 

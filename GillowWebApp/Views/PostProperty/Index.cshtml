@@ -1,0 +1,565 @@
+﻿
+
+
+
+
+@{
+    ViewData["Title"] = "Post Property";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<link href="~/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+<script src="~/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+<script src="~/assets/js/dropzone.js"></script>
+
+@*<script src="~/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>*@
+<!-- ============================ Page Title Start================================== -->
+<!-- ============================ Page Title End ================================== -->
+<!-- ============================ Submit Property Start ================================== -->
+
+
+<div class="col-lg-9 col-md-12">
+    <div class="row">
+        <br />
+        <br />
+        <div class="page-title">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+
+                        <h2 class="ipt-title">Submit Property</h2>
+                        <span class="ipn-subtitle">Just Submit Your Property</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================ Page Title End ================================== -->
+        <!-- ============================ Submit Property Start ================================== -->
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12 col-md-12">
+
+                    <div class="alert alert-success" role="alert">
+                        <p>Please, Sign In before you submit a property. If you don't have an account you can create one by <a href="#">Clicking Here</a></p>
+                    </div>
+
+                </div>
+
+
+                <!-- Submit Form -->
+                <div class="col-lg-12 col-md-12">
+
+                    <div class="submit-page">
+
+                        <!-- Basic Information -->
+                        <div class="form-submit">
+                            <h3>Basic Information</h3>
+                            <div class="submit-section">
+                                <div class="row">
+
+                                    <div class="form-group col-md-12">
+                                        <label>Property Title<span class="tip-topdata" data-tip="Property Title"><i class="ti-help"></i></span></label>
+                                        <input type="text" id="title" class="form-control">
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Category</label>
+                                        <select id="category" class="form-control">
+                                            <option value="For Rent">For Rent</option>
+                                            <option value="For Sale">For Sale</option>
+                                            <option value="Joint Venture">Joint Venture</option>
+                                            <option value="Short Let">Short Let</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Property Type</label>
+                                        <select id="types" class="form-control">
+                                            <option value="Commercial Property">Commercial Property</option>
+                                            <option value="Co-working Spaces">Co-working Spaces</option>
+                                            <option value="Detached Duplexes">Detached Duplexes</option>
+                                            <option value="Flats">Flats</option>
+                                            <option value="Houses">Houses</option>
+                                            <option value="Lands">Lands</option>
+                                            <option value="Shops">Shops</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Currency</label>
+                                        <select id="currency" class="form-control">
+                                            @*<option value="">Currency</option>*@
+                                            <option value="Naira">Naira</option>
+                                            <option value="USD">USD</option>
+
+                                        </select>
+
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Amount (figures only eg 1000000)</label>
+                                        <input type="text" id="amount" class="form-control">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12">
+
+                                        <ul class="no-ul-list">
+                                            <li>
+                                                <input id="negotiable" class="checkbox-custom" name="aj-1" type="checkbox">
+                                                <label for="negotiable" class="checkbox-custom-label">Negotiable.</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Bedrooms</label>
+                                        <select id="bedrooms" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label>Bathrooms</label>
+                                        <select id="bathrooms" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Toilet</label>
+                                        <select id="Toilet" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Parking Space</label>
+                                        <select id="parking" class="form-control">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery -->
+            <div class="form-submit">
+                <br />
+                <br />
+                <h3>Property Image</h3>
+                <div class="submit-section">
+                    <div class="row">
+
+                        <div class="form-group col-md-12">
+                            <label>Upload Property Image</label>
+
+                            <form action="@Url.Action("UploadProperty", "PostProperty")" class="dropzone dz-clickable primary-dropzone" id="my-dropzone" enctype="multipart/form-data">
+                                <div class="dz-default dz-message">
+                                    <i class="ti-gallery"></i>
+                                    <span>Drag & Drop To Upload Property</span>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="col-lg-12 col-md-12">
+
+                <div class="submit-page">
+
+                    <!-- Address -->
+                    <div class="form-submit">
+
+                        <div class="submit-section">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label>Country</label>
+                                    <input type="text" id="country2" class="form-control">
+
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label>State</label>
+                                    <input type="text" id="state" class="form-control">
+
+                                </div>
+
+                                <div class="form-group col-md-4">
+                                    <label>Location</label>
+                                    <input type="text" id="location2" class="form-control">
+
+                                </div>
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+
+                <div class="submit-page">
+
+                    <!-- Link Information -->
+                    <div class="form-submit">
+
+                        <div class="submit-section">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Youtube Link</label>
+                                    <input type="text" id="youtube" class="form-control">
+
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label>Virtual Link</label>
+                                    <input type="text" id="virtual" class="form-control">
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Detailed Information -->
+            <div class="form-submit">
+                <h3>Detailed Information</h3>
+                <div class="submit-section">
+                    <div class="row">
+
+                        <div class="form-group col-md-12">
+                            <label>Description</label>
+                            <textarea class="form-control h-120" id="description"></textarea>
+                        </div>
+
+
+
+                        <div class="form-group col-md-12">
+                            <label>Other Features (optional)</label>
+                            <div class="o-features">
+                                <ul class="no-ul-list third-row">
+                                    <li>
+                                        <input id="a-1" class="checkbox-custom" name="New" value="New" type="checkbox">
+                                        <label for="a-1" class="checkbox-custom-label">New</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-2" class="checkbox-custom" name="Renovated" value="Renovated" type="checkbox">
+                                        <label for="a-2" class="checkbox-custom-label">Renovated</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-3" class="checkbox-custom" name="Old" value="Old" type="checkbox">
+                                        <label for="a-3" class="checkbox-custom-label">Old</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-4" class="checkbox-custom" name="Cheap" value="Cheap" type="checkbox">
+                                        <label for="a-4" class="checkbox-custom-label">Cheap</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-5" class="checkbox-custom" name="Furnished" value="Furnished" type="checkbox">
+                                        <label for="a-5" class="checkbox-custom-label">Furnished</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-6" class="checkbox-custom" name="Serviced" value="Serviced" type="checkbox">
+                                        <label for="a-6" class="checkbox-custom-label">Serviced</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-7" class="checkbox-custom" name="Dry" value="Dry" type="checkbox">
+                                        <label for="a-7" class="checkbox-custom-label">Dry</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-8" class="checkbox-custom" name="Swampy" value="Swampy" type="checkbox">
+                                        <label for="a-8" class="checkbox-custom-label">Swampy</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-9" class="checkbox-custom" name="24 Hours Electricity" value="24 Hours Electricity" type="checkbox">
+                                        <label for="a-9" class="checkbox-custom-label">24 Hours Electricity</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-10" class="checkbox-custom" name="24 Hours Security" value="24 Hours Security" type="checkbox">
+                                        <label for="a-10" class="checkbox-custom-label">24 Hours Security</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-11" class="checkbox-custom" name="All Room Ensuite" value="All Room Ensuite" type="checkbox">
+                                        <label for="a-11" class="checkbox-custom-label">All Room Ensuite</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-12" class="checkbox-custom" name="Big Compound" value="Big Compound" type="checkbox">
+                                        <label for="a-12" class="checkbox-custom-label">Big Compound</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-13" class="checkbox-custom" name="Boys Quarter" value="Boys Quarter" type="checkbox">
+                                        <label for="a-13" class="checkbox-custom-label">Boys Quarter</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-14" class="checkbox-custom" name="C of O" value="C of O" type="checkbox">
+                                        <label for="a-14" class="checkbox-custom-label">C of O</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-15" class="checkbox-custom" name="CCTV Cameras" value="CCTV Cameras" type="checkbox">
+                                        <label for="a-15" class="checkbox-custom-label">CCTV Cameras</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-16" class="checkbox-custom" name="Child Care" value="Child Care" type="checkbox">
+                                        <label for="a-16" class="checkbox-custom-label">Child Care</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-17" class="checkbox-custom" name="Children Play Ground" value="Children Play Ground" type="checkbox">
+                                        <label for="a-17" class="checkbox-custom-label">Children Play Ground</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-18" class="checkbox-custom" name="Church Nearby" value="Church Nearby" type="checkbox">
+                                        <label for="a-18" class="checkbox-custom-label">Church Nearby</label>
+                                    </li>
+
+                                    <li>
+                                        <input id="a-19" class="checkbox-custom" name="Drainage System" value="Drainage System" type="checkbox">
+                                        <label for="a-19" class="checkbox-custom-label">Drainage System</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-20" class="checkbox-custom" name="Elevator" value="Elevator" type="checkbox">
+                                        <label for="a-20" class="checkbox-custom-label">Elevator</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-22" class="checkbox-custom" name="Excision" value="Excision" type="checkbox">
+                                        <label for="a-22" class="checkbox-custom-label">Excision</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-23" class="checkbox-custom" name="Fast Internet" value="Fast Internet" type="checkbox">
+                                        <label for="a-23" class="checkbox-custom-label">Fast Internet</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-24" class="checkbox-custom" name="Free Wifi" value="Free Wifi" type="checkbox">
+                                        <label for="a-24" class="checkbox-custom-label">Free Wifi</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-25" class="checkbox-custom" name="Front Desk Service" value="Front Desk Service" type="checkbox">
+                                        <label for="a-25" class="checkbox-custom-label">Front Desk Service</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-26" class="checkbox-custom" name="Governor's Consent" value="Governor's Consent" type="checkbox">
+                                        <label for="a-26" class="checkbox-custom-label">Governor's Consent</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-27" class="checkbox-custom" name="Gym" value="Gym" type="checkbox">
+                                        <label for="a-27" class="checkbox-custom-label">Gym</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-28" class="checkbox-custom" name="Jacuzzi" value="Jacuzzi" type="checkbox">
+                                        <label for="a-28" class="checkbox-custom-label">Jacuzzi</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-29" class="checkbox-custom" name="Mosques Nearby" value="Mosques Nearby" type="checkbox">
+                                        <label for="a-29" class="checkbox-custom-label">Mosques Nearby</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-30" class="checkbox-custom" name="Ocean View" value="Ocean View" type="checkbox">
+                                        <label for="a-30" class="checkbox-custom-label">Ocean View</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-31" class="checkbox-custom" name="Office Supplies" value="Office Supplies" type="checkbox">
+                                        <label for="a-31" class="checkbox-custom-label">Office Supplies</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-32" class="checkbox-custom" name="Parking Spaces" value="Parking Spaces" type="checkbox">
+                                        <label for="a-32" class="checkbox-custom-label">Parking Spaces</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-33" class="checkbox-custom" name="Restaurants Nearby" value="Restaurants nearby" type="checkbox">
+                                        <label for="a-33" class="checkbox-custom-label">Restaurants Nearby</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-34" class="checkbox-custom" name="Security" value=" Security" type="checkbox">
+                                        <label for="a-34" class="checkbox-custom-label">Security</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-35" class="checkbox-custom" name="Security Doors" value="Security Doors" type="checkbox">
+                                        <label for="a-35" class="checkbox-custom-label">Security Doors</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-36" class="checkbox-custom" name="Street Lights" value="Street Lights" type="checkbox">
+                                        <label for="a-36" class="checkbox-custom-label">Street Lights</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-37" class="checkbox-custom" name="Supermarket Nearby" value="Supermaket Nearby" type="checkbox">
+                                        <label for="a-37" class="checkbox-custom-label">Supermarket Nearby</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-38" class="checkbox-custom" name="Survey" value="Survey" type="checkbox">
+                                        <label for="a-38" class="checkbox-custom-label">Survey</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-39" class="checkbox-custom" name="Swimming Pool" value="Swimming Pool" type="checkbox">
+                                        <label for="a-39" class="checkbox-custom-label">Swimming Pool</label>
+                                    </li>
+                                    <li>
+                                        <input id="a-40" class="checkbox-custom" name="Water Treatment" value="Water Treatment" type="checkbox">
+                                        <label for="a-40" class="checkbox-custom-label">Water Treatment</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group col-lg-12 col-md-12">
+                <button class="btn btn-theme-light-2 rounded" type="button" id="btnSubmit">Submit & Preview</button>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+
+</div>
+<script>
+    //var title = $('#title').val();
+    //var category = $('#category').val();
+    //var types = $('#types').val();
+    //var currency = $('#currency').val();
+    //var amount = $('#amount').val();
+    //var bedrooms = $('#bedrooms').val();
+    //var parking = $('#parking').val();
+    //var toilet = $('Toilet').val();
+    //var description = $('#description').val();
+    //var location = $('#location').val();
+    //var bathroom = $('#bathrooms').val();
+    //var files = '';
+    //var fileData = new FormData();
+    //fileData.append('Title', title);
+    //fileData.append('Bathroom', bathroom);
+    //fileData.append('Toilet', toilet);
+    //fileData.append('Category', category);
+    //fileData.append('Types', types);
+    //fileData.append('Currency', currency);
+    //fileData.append('Amount', amount);
+    //fileData.append('bedroom', bedrooms);
+    //fileData.append('Parking', parking);
+    //fileData.append('description', description);
+    //fileData.append('location', location);
+    //fileData.append('Features', selectedIDs);
+    //var selectedIDs = new Array();
+    //$('.checkbox-custom:checked').each(function () {
+    //    if ($(this).prop('checked')) {
+    //        selectedIDs.push($(this).val());
+    //    }
+    //});
+    Dropzone.autoDiscover = false;
+
+    $(function () {
+        var dz = null;
+        $('#my-dropzone').dropzone({
+            autoProcessQueue: false,
+            maxFilesize: 2,
+            maxFiles: 5,
+            parallelUploads: 5,
+            acceptedFiles: ".jpg,.png,.jpeg",
+            uploadMultiple: true,
+            addRemoveLinks: true,
+           
+            // resizeWidth: 64,
+
+            init: function () {
+                dz = this;
+                $("#btnSubmit").click(function () {
+
+                    dz.processQueue();
+
+                });
+
+                dz.on('sendingmultiple', function (data, xhr, formdata) {
+                    //var title =$('#title').val();
+                    //var category = $('#category').val();
+                    //var types = $('#types').val();
+                    //var currency = $('#currency').val();
+                    //var amount = $('#amount').val();
+                    //var bedrooms = $('#bedrooms').val();
+                    //var parking = $('#parking').val();
+                    //var toilet = $('toilet').val();
+                    //var description = $('#description').val();
+                    //var location = $('#location').val();
+                    //var bathroom = $('#bathrooms').val();
+                   
+                   // var files = '';
+                  //  var filedata = new formdata();
+                   
+                    formdata.append('title', $('#title').val());
+                    formdata.append('bathroom', $('#bathrooms').val());
+                    formdata.append('toilet', $('#Toilet').val());
+                    formdata.append('category', $('#category').val());
+                    formdata.append('types', $('#types').val());
+                    formdata.append('currency', $('#currency').val());
+                    formdata.append('amount', $('#amount').val());
+                    formdata.append('bedroom', $('#bedrooms').val());
+                    formdata.append('parking', $('#parking').val());
+                    formdata.append('description', $('#description').val());
+                    formdata.append('location', $('#location2').val());
+                    formdata.append('negotaible', $('#negotiable').val());
+                    formdata.append('virtual', $('#virtual').val());
+                    formdata.append('youtube', $('#youtube').val());
+                    formdata.append('virtual', $('#virtual').val());
+                    formdata.append('country', $('#country2').val());
+                    formdata.append('state', $('#state').val());
+                    var selectedids = new Array();
+                    $('.checkbox-custom:checked').each(function () {
+                        if ($(this).prop('checked')) {
+                            selectedids.push($(this).val());
+                        }
+                    });
+                    formdata.append('features', selectedids);
+
+                   // formdata = new formdata(myform);
+                });
+            },
+
+            dictDefaultMessage: "Click to select Property Image"
+        });
+    });
+   
+</script>
+
+<!-- ============================ Submit Property End ================================== -->

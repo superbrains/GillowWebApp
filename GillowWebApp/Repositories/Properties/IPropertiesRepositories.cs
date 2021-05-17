@@ -22,16 +22,16 @@ namespace GillowWebApp.Repositories.AllProperties
         Task<ActionResult<string>> UpdateVirtualRequests(VirtualRequestVM virtualRequestVM);
         Task<ActionResult<string>> DeleteVirtualRequests(VirtualRequestVM virtualRequestVM);
         Task<ActionResult<propertiesdetailsResult>> GetPropertyByProfile(int ProfileID, int Skip);
-         Task<ActionResult<SearchResult>> GetPropertyByOwner(int ProfileID, int Skip);
+        SearchResult GetPropertyByOwner(int ProfileID, int Skip);
         string SendVirtualServiceEmail(string CustomerEmail, string PropertyTitle, String PropertyLocation, String CustomerName);
         string SendVirtualServiceEmailCompleted(string CustomerEmail, string PropertyTitle, String PropertyLocation, String CustomerName);
-        Task<ActionResult<string>> BoostProperty(BoostView boostView);
+        string BoostProperty(BoostView boostView);
         string UpdateView(UpdateViewVM updateView);
         string RemoveProperty(UpdateViewVM updateView);
         string CompressAll();
         string compressImage(String filePath);
      
-        Task<ActionResult<PropertyResult>> PostProperty([FromForm] PropertyView propertyView);
+        PropertyResult PostProperty([FromForm] PropertyView propertyView);
         IActionResult GetProperty3DImage(int PropertyID);
         Task<IActionResult> PostProperty3D([FromBody] Property3D property3D);
         string GetPropertyFeatures(int PropertyID);
